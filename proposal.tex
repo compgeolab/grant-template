@@ -1,0 +1,325 @@
+% Main proposal text for FAPESP.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set a class and general configuration
+\documentclass[onecolumn,a4paper,12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set variables with the title, authors, etc.
+% Edit the values and they will propagate to the document and head/foot
+
+% Common variables for other documents defined in information.tex
+\include{information.tex}
+
+\newcommand{\DocumentTitle}{\Title}
+\newcommand{\Team}{%
+  Person A\textsuperscript{1},
+  Person B\textsuperscript{2}
+}
+\newcommand{\Affiliations}{%
+  \textsuperscript{1}Observatório Nacional, Brasil;
+  \textsuperscript{2}University of Liverpool, UK;
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Import the required packages
+\usepackage[utf8]{inputenc}
+\usepackage[TU]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{xcolor}
+% To customize the title page
+\usepackage{titling}
+% improved urls with proper hyphenation
+\usepackage{xurl}
+% Tweak the look of captions
+\usepackage{caption}
+% To control the style of section titles
+\usepackage{titlesec}
+% Import natbib and doi packages
+\usepackage[round,authoryear,sort]{natbib}
+% show dois as links on references
+\usepackage{doi}
+% Remove extra space between references
+\usepackage{natbibspacing}
+% Use a different font
+\usepackage[scaled=0.9,sfdefault]{notomath}
+% Icons and fonts (requires using xelatex or luatex)
+\usepackage{fontawesome5}
+\usepackage{academicons}
+% Control the font size
+\usepackage{anyfontsize}
+\usepackage{setspace}
+% To get the number of pages in the document
+\usepackage{lastpage}
+\usepackage{lipsum}
+\usepackage{ragged2e}
+\usepackage{mdframed}
+% To define custom environments
+\usepackage{environ}
+% To control hyphenation for individual blocks of text
+\usepackage{hyphenat}
+% To add line numbers
+\usepackage{reledmac}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuration of the document
+\geometry{%
+  left=30mm,
+  right=15mm,
+  top=15mm,
+  bottom=15mm,
+  headsep=0mm,
+  headheight=0mm,
+  footskip=7mm,
+  includehead=true,
+  includefoot=true
+}
+
+% Control line and table row spacing
+\onehalfspacing
+\renewcommand{\arraystretch}{1.5}
+
+% Set the spacing between bibliography entries (requires natbib)
+\setlength{\bibsep}{0pt}
+
+% Custom colors
+\definecolor{darkgray}{gray}{0.4}
+\definecolor{mediumgray}{gray}{0.5}
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{mediumblue}{HTML}{2060c2}
+\definecolor{lightblue}{HTML}{f7faff}
+
+% Configure captions
+\captionsetup[table]{position=below,skip=0pt}
+\captionsetup{labelfont=bf,font={small,color=darkgray},skip=10pt}
+
+% Make urls use the same font as every other text
+\urlstyle{same}
+
+% Number every single line instead of every 5th line
+\firstlinenum{1}
+\linenumincrement{1}
+
+% Configure hyperref and add PDF metadata
+\hypersetup{
+    colorlinks,
+    allcolors=mediumblue,
+    pdftitle={\DocumentTitle},
+    pdfauthor={\PIname},
+    breaklinks=true,
+}
+
+% Configure header and footer
+% Inspired by LaPreprint: https://github.com/roaldarbol/LaPreprint
+\newcommand{\Separator}{\hspace{3pt}|\hspace{3pt}}
+\newcommand{\FooterFont}{\footnotesize\color{mediumgray}}
+\pagestyle{fancy}
+\fancyhf{}
+\lfoot{%
+  \FooterFont{}
+  \TeamShort{} (\Year)
+  \Separator{}
+  \TitleShort
+}
+\rfoot{%
+  \FooterFont{}
+  \FundingCall{}
+  \Separator{}
+  \thepage\space of\space \pageref*{LastPage}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\preto{\footrule}{\color{lightgray}}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \lfoot{}
+  \rfoot{}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Define fancy text boxes
+\NewEnviron{summarybox}{%
+  \mdfdefinestyle{summarybox_}{%
+    leftline=true,
+    rightline=false,
+    topline=false,
+    bottomline=false,
+    linewidth=2pt,
+    linecolor=mediumblue,
+    backgroundcolor=lightblue,
+    innertopmargin=12pt,
+    innerbottommargin=12pt,
+    innerleftmargin=12pt,
+    innerrightmargin=12pt,
+    skipbelow=5pt,
+    skipabove=5pt,
+  }
+  \newmdenv[style=summarybox_]{summarybox_}
+  \begin{summarybox_}
+    \footnotesize
+    \BODY
+  \end{summarybox_}
+}
+
+
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page in English
+\thispagestyle{plain}
+\begin{FlushLeft}
+  \begin{spacing}{2}
+    {\LARGE \textbf{\Title}}
+  \end{spacing}
+  \vspace{0.1cm}
+  \textbf{Principle Investigator:} \PIname
+  \\[0.3cm]
+  \textbf{Host Institution:} \Institution
+  \\[0.3cm]
+  \textbf{Project Team:} \Team
+  \\[0.1cm]
+  {\footnotesize \Affiliations}
+  \\[0.5cm]
+  {\color{lightgray}\hrule height 1.5pt}
+\end{FlushLeft}
+
+\section*{\normalsize Summary}
+\beginnumbering
+\autopar
+
+
+% Project summary in English (max 20 lines)
+\lipsum[1-3]  % Delete this and write the summary here
+
+
+\endnumbering
+\vfill
+\begin{center}
+  \includegraphics[height=0.8cm]{figures/usp.png}\hspace{1cm}
+  \includegraphics[height=0.8cm]{figures/iag.png}\hspace{1cm}
+  \includegraphics[height=0.8cm]{figures/compgeolab.png}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page in Portuguese
+\newpage
+\thispagestyle{plain}
+\begin{FlushLeft}
+  \begin{spacing}{2}
+    {\LARGE \textbf{\TitlePt}}
+  \end{spacing}
+  \vspace{0.1cm}
+  \textbf{Pesquisador Responsável:} \PIname
+  \\[0.3cm]
+  \textbf{Instituição Sede:} \Institution
+  \\[0.3cm]
+  \textbf{Equipe do Projeto:} \Team
+  \\[0.1cm]
+  {\footnotesize \Affiliations}
+  \\[0.5cm]
+  {\color{lightgray}\hrule height 1.5pt}
+\end{FlushLeft}
+
+\section*{\normalsize Resumo}
+\beginnumbering
+\autopar
+
+
+% Project summary in Portuguese (max 20 lines)
+\lipsum[1-3]  % Delete this and write the summary here
+
+
+\endnumbering
+\vfill
+\begin{center}
+  \includegraphics[height=0.8cm]{figures/usp.png}\hspace{1cm}
+  \includegraphics[height=0.8cm]{figures/iag.png}\hspace{1cm}
+  \includegraphics[height=0.8cm]{figures/compgeolab.png}
+\end{center}
+
+\newpage
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problem statement}
+% What is the problem being addressed and what is it's importance? What will be
+% the contribution to the field if this works?
+
+
+
+\lipsum[1-5]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Expected results}
+% What will be created/produced as a result?
+
+\lipsum[1-5]
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scientific and technological challenges}
+% Main challenges faced and how they will be overcome. Explain the main
+% scientific/technological challenges that will need to be overcome to achieve
+% the project goals. Describe methods that will be employed. Cite literature
+% that will allow referees to determine that the challenges were not already
+% overcome and that the methods employed are appropriate.
+
+\lipsum[1-5]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Schedule}
+% When will the project stages be completed? Which events/landmarks can be used
+% to measure progress and completion?
+
+
+\lipsum[1-5]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dissemination and evaluation}
+% How will the project results be evaluated and disseminated to the public and
+% the scientific community?
+
+
+\lipsum[1-5]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Other support}
+% Indique outros apoios ao projeto, se houver, em forma de fundos, bens ou
+% serviços, mas sem incluir itens como uso de instalações da instituição que já
+% estão disponíveis. Note que os autores das propostas selecionadas deverão
+% apresentar documento assinado pelo dirigente da Instituição Sede,
+% comprometendo os recursos e bens adicionais descritos na proposta.
+
+
+
+\lipsum[1-5]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+\newpage
+\bibliographystyle{apalike-doi}
+\bibliography{references}
+
+\end{document}
+%------------------------------------------------------------------------------

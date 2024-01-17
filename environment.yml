@@ -1,0 +1,11 @@
+name: grant-fapesp
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Should be on every project
+  - python==3.10.*
+  # For building latex documents
+  - make
+  - tectonic
+  # Project specific dependencies

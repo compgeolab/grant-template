@@ -1,0 +1,163 @@
+% Description of activities for the project team
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set a class and general configuration
+\documentclass[onecolumn,a4paper,12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set variables with the title, authors, etc.
+% Edit the values and they will propagate to the document and head/foot
+
+\include{information.tex}
+\newcommand{\DocumentTitle}{%
+  Data management plan
+}
+\renewcommand{\TitleShort}{Data management plan}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Import the required packages
+\usepackage[utf8]{inputenc}
+\usepackage[TU]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{xcolor}
+% improved urls with proper hyphenation
+\usepackage{xurl}
+% To control the style of section titles
+\usepackage{titlesec}
+% Use a different font
+\usepackage[scaled=0.9,sfdefault]{notomath}
+% Control the font size
+\usepackage{anyfontsize}
+\usepackage{setspace}
+% To get the number of pages in the document
+\usepackage{lastpage}
+\usepackage{lipsum}
+\usepackage{ragged2e}
+% To control hyphenation for individual blocks of text
+\usepackage{hyphenat}
+% To add line numbers
+\usepackage{reledmac}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuration of the document
+\geometry{%
+  left=30mm,
+  right=15mm,
+  top=15mm,
+  bottom=15mm,
+  headsep=0mm,
+  headheight=0mm,
+  footskip=7mm,
+  includehead=true,
+  includefoot=true
+}
+
+% Control line and table row spacing
+\onehalfspacing
+\renewcommand{\arraystretch}{1.5}
+
+% Custom colors
+\definecolor{darkgray}{gray}{0.4}
+\definecolor{mediumgray}{gray}{0.5}
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{mediumblue}{HTML}{2060c2}
+\definecolor{lightblue}{HTML}{f7faff}
+
+% Make urls use the same font as every other text
+\urlstyle{same}
+
+% Number every single line instead of every 5th line
+\firstlinenum{1}
+\linenumincrement{1}
+
+% Configure hyperref and add PDF metadata
+\hypersetup{
+    colorlinks,
+    allcolors=mediumblue,
+    pdftitle={\DocumentTitle},
+    pdfauthor={\PIname},
+    breaklinks=true,
+}
+
+% Configure header and footer
+% Inspired by LaPreprint: https://github.com/roaldarbol/LaPreprint
+\newcommand{\Separator}{\hspace{3pt}|\hspace{3pt}}
+\newcommand{\FooterFont}{\footnotesize\color{mediumgray}}
+\pagestyle{fancy}
+\fancyhf{}
+\lfoot{%
+  \FooterFont{}
+  \TeamShort{} (\Year)
+  \Separator{}
+  \TitleShort
+}
+\rfoot{%
+  \FooterFont{}
+  \FundingCall{}
+  \Separator{}
+  \thepage\space of\space \pageref*{LastPage}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\preto{\footrule}{\color{lightgray}}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \lfoot{}
+  \rfoot{}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+
+\begin{document}
+
+
+\begin{spacing}{2}
+  \noindent
+  {\LARGE \textbf{\DocumentTitle}}
+\end{spacing}
+
+\noindent
+\textbf{Project:} \Title
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main text - EDIT HERE
+
+% Texto de até duas páginas, contendo as seguintes informações
+% a) Descrição dos dados e metadados produzidos pelo projeto - por exemplo,
+% amostras, registros de coleta, formulários, modelos, resultados experimentais,
+% software, gráficos, mapas, vídeos, planilhas, gravações de áudio, bancos de
+% dados, material didático e outros.
+% b) Quando aplicável, restrições legais ou éticas para compartilhamento de tais
+% dados, políticas para garantir a privacidade, confidencialidade, segurança,
+% propriedade intelectual e outros.
+% c) Política de preservação e compartilhamento (por exemplo, compartilhamento
+% imediato ou apenas após a aceitação da publicação associada). Período de
+% carência (antes do compartilhamento) e período durante o qual os dados serão
+% preservados e disponibilizados.
+% d) Descrição de mecanismos, formatos e padrões para armazenar tais itens de
+% forma a torná-los acessíveis por terceiros. Esta descrição pode incluir o uso
+% de repositórios e serviços de outras instituições.
+
+\section{Data description}
+
+\lipsum[1]
+
+\section{Sharing conditions}
+
+\lipsum[2]
+
+\section{Preservation and sharing}
+
+\lipsum[3-4]
+
+
+\end{document}
+%------------------------------------------------------------------------------
+

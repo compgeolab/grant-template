@@ -1,0 +1,245 @@
+% CV summary (súmula curricular)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set a class and general configuration
+\documentclass[onecolumn,a4paper,11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set variables with the title, authors, etc.
+% Edit the values and they will propagate to the document and head/foot
+
+\include{information.tex}
+\newcommand{\Name}{Leonardo Uieda}
+\newcommand{\DocumentTitle}{%
+  Súmula curricular - \Name
+}
+\renewcommand{\TitleShort}{\DocumentTitle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Import the required packages
+\usepackage[utf8]{inputenc}
+\usepackage[TU]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{xcolor}
+% Disable hyphenation
+\usepackage[none]{hyphenat}
+% Left-align instead of justify
+\usepackage[document]{ragged2e}
+% improved urls with proper hyphenation
+\usepackage{xurl}
+% To control the style of section titles
+\usepackage{titlesec}
+% Use a different font
+\usepackage[scaled=0.9,sfdefault]{notomath}
+\usepackage{academicons}
+\usepackage{fontawesome5}
+% Control the font size
+\usepackage{anyfontsize}
+\usepackage{setspace}
+% Control spacing in enumerates
+\usepackage{enumitem}
+% To get the number of pages in the document
+\usepackage{lastpage}
+\usepackage{lipsum}
+\usepackage{ragged2e}
+% Configure section titles
+\usepackage{titlesec}
+% To control hyphenation for individual blocks of text
+\usepackage{hyphenat}
+% For fancy and multipage tables
+\usepackage{tabularx}
+\usepackage{ltablex}
+% For new environments
+\usepackage{environ}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuration of the document
+\geometry{%
+  left=25mm,
+  right=20mm,
+  top=20mm,
+  bottom=20mm,
+  headsep=0mm,
+  headheight=0mm,
+  footskip=7mm,
+  includehead=true,
+  includefoot=true
+}
+
+% Control line and table row spacing
+\renewcommand{\baselinestretch}{1}
+\renewcommand{\arraystretch}{1.1}
+% Remove space between items in itemize and enumerate
+\setlist{nosep}
+
+% No indentation
+\setlength\parindent{0cm}
+
+% Set the spacing and format of sections
+\titleformat{\section}
+  {\normalfont\Large\mdseries} % format
+  {} % label
+  {0pt} % separation (left separation for hang)
+  {} % text before title
+  [\titlerule] % text after title
+\titlespacing*{\section}
+  {0pt} % left pad
+  {0.1cm} % before
+  {0cm} % after
+
+% Disable number of sections. Use this instead of "section*" so that the sections still
+% appear as PDF bookmarks. Otherwise, would have to add the table of contents entries
+% manually.
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+% Custom colors
+\definecolor{darkgray}{gray}{0.4}
+\definecolor{mediumgray}{gray}{0.5}
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{mediumblue}{HTML}{2060c2}
+\definecolor{lightblue}{HTML}{f7faff}
+
+% Make urls use the same font as every other text
+\urlstyle{same}
+
+% Configure hyperref and add PDF metadata
+\hypersetup{
+    colorlinks,
+    allcolors=mediumblue,
+    pdftitle={\DocumentTitle},
+    pdfauthor={\PIname},
+    breaklinks=true,
+}
+
+% Configure header and footer
+% Inspired by LaPreprint: https://github.com/roaldarbol/LaPreprint
+\newcommand{\Separator}{\hspace{3pt}|\hspace{3pt}}
+\newcommand{\FooterFont}{\footnotesize\color{mediumgray}}
+\pagestyle{fancy}
+\fancyhf{}
+\lfoot{%
+  \FooterFont{}
+  \TeamShort{} (\Year)
+  \Separator{}
+  \TitleShort
+}
+\rfoot{%
+  \FooterFont{}
+  \FundingCall{}
+  \Separator{}
+  \thepage\space of\space \pageref*{LastPage}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\preto{\footrule}{\color{lightgray}}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \lfoot{}
+  \rfoot{}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Define a new environment to place all CV entries in a 2-column table.
+% Left column are the dates, right column the entries.
+\newcommand{\TablePad}{\vspace{-0.2cm}}
+\NewEnviron{EntriesTableDuration}{
+\TablePad
+\begin{tabularx}{\textwidth}{@{}p{0.10\textwidth}@{\hspace{0.02\textwidth}}p{0.88\textwidth}@{}}
+  \BODY
+\end{tabularx}
+\TablePad
+}
+\newcommand{\Duration}[2]{\fontsize{9pt}{0}\selectfont #1 - #2}
+\newcommand{\DOI}[1]{doi:\href{https://doi.org/#1}{#1}}
+\newcommand{\Website}[1]{\href{https://#1}{#1}}
+
+
+
+\begin{document}
+
+{\LARGE \textbf{\DocumentTitle}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main text - EDIT HERE
+
+\section{Formação}
+
+\begin{EntriesTableDuration}
+  \Duration{2004}{2009}  &
+  \textbf{Bacharelado em Geofísica} (72 meses). Universidade de São Paulo.
+  Orientadora: Naomi Ussami.
+  ``Cálculo do tensor gradiente gravimétrico utilizando tesseroides.''
+  \\
+  \Duration{2010}{2011}  &
+  \textbf{Mestrado em Geofísica} (20 meses). Observatório Nacional.
+  Orientadora: Valéria C. F. Barbosa.
+  ``Robust 3D gravity gradient inversion by planting anomalous densities.''
+  \\
+  \Duration{2011}{2016}  &
+  \textbf{Doutorado em Geofísica} (54 meses). Observatório Nacional.
+  Orientadora: Valéria C. F. Barbosa.
+  ``Forward modeling and inversion of gravitational fields in spherical coordinates.''
+  \\
+  \Duration{2017}{2019}  &
+  \textbf{Pós-doutorado} (30 meses). University of Hawai`i at M\={a}noa, E.U.A.
+  Orientador: Paul Wessel.
+  \\
+  \Duration{2008}{2009}  &
+  \textbf{Intercâmbio Internacional} (10 meses). York University, Canadá.
+\end{EntriesTableDuration}
+
+\section{Histórico profissional, serviços e distinções acadêmicas e prêmios}
+% Listar as principais posições profissionais que ocupou informando datas de
+% início, término, e instituições (essas posições podem ser acadêmicas,
+% empresariais ou administrativas, como a gestão de grandes projetos ou de
+% instituições de ensino e pesquisa). Podem também ser listadas atividades
+% associativas (participação em associações, federações, comissões
+% temáticas/técnicas, conselhos de empresas/institutos/universidades), bem como
+% atuação em empreendedorismo e startups e distinções acadêmicas e prêmios
+% recebidos.
+
+\begin{EntriesTableDuration}
+  \Duration{02/2014}{02/2018}  &
+  \textbf{Professor Assistente}. Universidade do Estado do Rio de Janeiro.
+  \newline
+  Departamento de Geologia Aplicada -- Faculdade de Geologia.
+  \\
+  \Duration{08/2019}{07/2023}  &
+  \textbf{Lecturer}. University of Liverpool, Reino Unido.
+  \newline
+  Department of Earth, Ocean and Ecological Sciences -- School of Environmental Sciences.
+  \\
+  \Duration{08/2023}{atual}  &
+  \textbf{Professor Doutor}. Universidade de São Paulo.
+  \newline
+  Departamento de Geofísica -- Instituto de Astronomia, Geofísica e Ciências Atmosféricas.
+  \\
+  \Duration{06/2022}{atual}  &
+  \textbf{Board Member}. Software Underground.
+  \newline
+  Departamento de Geofísica -- Instituto de Astronomia, Geofísica e Ciências Atmosféricas.
+\end{EntriesTableDuration}
+
+\section{Resultados de pesquisa mais relevantes e de maior impacto}
+
+\section{Financiamentos à pesquisa}
+
+\section{Indicadores quantitativos}
+
+\section{Links}
+
+\section{Outras informações}
+
+
+\end{document}
+%------------------------------------------------------------------------------
+
