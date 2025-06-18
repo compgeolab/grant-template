@@ -14,9 +14,10 @@ all: $(PDF)
 	tectonic -X compile $<
 
 show: $(PDF)
-	for fname in $^ ; do \
-		python -c "import sys; import webbrowser; webbrowser.open(sys.argv[1])" $$fname ; \
-	done
+	for fname in $^ ; do xdg-open $$fname ; done
+
+wordcount:
+	detex proposal.tex | wc --words
 
 clean:
 	rm -f $(PDF) *.*end
